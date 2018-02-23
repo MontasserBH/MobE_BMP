@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_ma_fac"
+        android:title="@string/menu_ma_fac"
+        app:showAsAction="never">
+        <menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <item
+                android:id="@+id/menu_geoloc"
+                android:title="@string/menu_geoloc"
+                app:showAsAction="never"></item>
+            <item
+                android:id="@+id/menu_anomalies"
+                android:title="@string/menu_anomalies"
+                app:showAsAction="never"></item>
+        </menu>
+    </item>
+    <item android:id="@+id/menu_mes_cours"
+        android:title="@string/menu_mes_cours"
+        app:showAsAction="never">
+        <menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <item
+                android:id="@+id/menu_emploi_du_temps"
+                android:title="@string/menu_emploi_du_temps"
+                app:showAsAction="never"></item>
+            <item
+                android:id="@+id/menu_informations_fac"
+                android:title="@string/menu_informations_fac"
+                app:showAsAction="never"></item>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_configuration"
+        android:title="@string/menu_configuration">
+        <menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <item
+                android:id="@+id/menu_informations_personnelles"
+                android:title="@string/menu_informations_personnelles"
+                app:showAsAction="never"></item>
+            <item
+                android:id="@+id/menu_point_interet"
+                android:title="@string/menu_point_interet"
+                app:showAsAction="never"></item>
+        </menu>
+    </item>
+</menu>

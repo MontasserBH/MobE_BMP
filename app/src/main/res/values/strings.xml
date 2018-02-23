@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MobE_BMP</string>
+    <string name="menu_ma_fac">Ma Fac</string>
+    <string name="menu_mes_cours">Mes Cours</string>
+    <string name="menu_configuration">Configuration</string>
+    <string name="menu_geoloc">Geolocalisation</string>
+    <string name="menu_anomalies">Détection d\'anomalies</string>
+    <string name="menu_emploi_du_temps">Emploi du temps</string>
+    <string name="menu_informations_fac">Informations</string>
+    <string name="menu_informations_personnelles">Mes Informations</string>
+    <string name="menu_point_interet">Points d\'intérêts</string>
 </resources>
