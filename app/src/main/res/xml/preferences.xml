@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Une boîte de dialogue -->
+        <EditTextPreference
+            android:key="@string/config_urlEdt_key"
+            android:title="@string/config_urlEdt_title"
+            android:summary="Click to open an editor field"
+            android:dialogTitle="Any text is ok"
+            />
+</PreferenceScreen>

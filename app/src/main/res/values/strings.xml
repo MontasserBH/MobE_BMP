@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MobE_BMP</string>
+
+    <!-- Menu -->
     <string name="menu_ma_fac">Ma Fac</string>
     <string name="menu_mes_cours">Mes Cours</string>
     <string name="menu_configuration">Configuration</string>
@@ -9,4 +11,11 @@
     <string name="menu_informations_fac">Informations</string>
     <string name="menu_informations_personnelles">Mes Informations</string>
     <string name="menu_point_interet">Points d\'intérêts</string>
+
+    <!-- Configurations -->
+    <string name="config_title">Configurations</string>
+    <string name="config_urlEdt_key">urlEdt</string>
+    <string name="config_urlEdt_title">Url de l\'emploi du temps :</string>
+    <string name="config_urlEdt_value">https://edt.univ-tlse3.fr/FSI/2017_2018/M2/M2_INF_DL/g251747.html</string>
+    <string name="config_validation">OK</string>
 </resources>

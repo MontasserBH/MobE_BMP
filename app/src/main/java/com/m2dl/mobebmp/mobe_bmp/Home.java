@@ -1,12 +1,11 @@
 package com.m2dl.mobebmp.mobe_bmp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import org.osmdroid.api.IMapController;
@@ -14,12 +13,8 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-import org.osmdroid.views.overlay.MinimapOverlay;
-import org.osmdroid.views.overlay.ScaleBarOverlay;
 import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
-import org.osmdroid.views.overlay.gestures.RotationGestureOverlay;
-import org.osmdroid.views.overlay.gridlines.LatLonGridlineOverlay2;
 
 public class Home extends AppCompatActivity {
     MapView mMapView = null;
@@ -60,15 +55,28 @@ public class Home extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.menu_ma_fac:
             /* DO EDIT */
+                return true;
+            case R.id.menu_geoloc:
+                intent = new Intent(Home.this, Home.class);
+                startActivity(intent);
                 return true;
             case R.id.menu_mes_cours:
             /* DO ADD */
                 return true;
             case R.id.menu_configuration:
             /* DO DELETE */
+                return true;
+            case R.id.menu_informations_personnelles :
+                intent = new Intent(Home.this, Configurations.class);
+                startActivity(intent);
+                return true;
+            case R.id.menu_emploi_du_temps:
+                intent = new Intent(Home.this, Edt.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
