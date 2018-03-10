@@ -1,9 +1,9 @@
 package com.m2dl.mobebmp.mobe_bmp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by Franck on 08/03/2018.
+ * activity qui affiche l'emploi du temps en fonction de l'url par défaut (M2 DL) ou celle entrée dans les paramètres
  */
 
 public class Edt extends AppCompatActivity {
@@ -24,17 +24,23 @@ public class Edt extends AppCompatActivity {
         setContentView(R.layout.activity_edt);
         view = (WebView) findViewById(R.id.edtView);
         view.setWebViewClient(new WebViewClient());
-        /*view.setWebViewClient(new MyBrowser());*/
         view.getSettings().setLoadsImagesAutomatically(true);
         view.getSettings().setJavaScriptEnabled(true);
         view.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         view.loadUrl(getUrl());
+        view.getSettings().setBuiltInZoomControls(true);
+        view.getSettings().setDisplayZoomControls(false);
     }
 
     private String getUrl()
     {
-        SharedPreferences settings = getSharedPreferences("preferences.xml", Context.MODE_PRIVATE);
+        /*SharedPreferences settings = getSharedPreferences("preferences", Context.MODE_PRIVATE);*/
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         String url = settings.getString(getString(R.string.config_urlEdt_key), getString(R.string.config_urlEdt_value));
+        if (url.equals(""))
+        {
+            url = getString(R.string.config_urlEdt_value);
+        }
         return url;
     }
 
@@ -72,5 +78,4 @@ public class Edt extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
 }

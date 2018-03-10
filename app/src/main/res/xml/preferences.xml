@@ -5,7 +5,7 @@
         <EditTextPreference
             android:key="@string/config_urlEdt_key"
             android:title="@string/config_urlEdt_title"
-            android:summary="Click to open an editor field"
-            android:dialogTitle="Any text is ok"
+            android:summary=""
+            android:dialogTitle="@string/config_urlEdt_dialogBox_title"
             />
 </PreferenceScreen>

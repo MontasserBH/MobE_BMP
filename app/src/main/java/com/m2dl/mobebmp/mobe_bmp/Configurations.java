@@ -1,44 +1,53 @@
 package com.m2dl.mobebmp.mobe_bmp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+
+import java.util.List;
 
 /**
- * Created by Franck on 09/03/2018.
+ * activity qui affiche les paramètres
  */
 
-public class Configurations extends PreferenceActivity implements View.OnClickListener {
-
-    SharedPreferences settings;
-    Button validation;
-    EditText urlEdt;
+public class Configurations extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        settings = getSharedPreferences("preferences.xml", Context.MODE_PRIVATE);
-        setContentView(R.layout.activity_configurations);
-        validation = (Button) findViewById(R.id.config_validation);
-        urlEdt = (EditText) findViewById(R.id.config_urlEdt_value);
-
-        validation.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        String newUrlEdt = urlEdt.getText().toString();
+    protected boolean isValidFragment(String fragmentName) {
+        return true;
+    }
 
-        SharedPreferences.Editor edit = settings.edit();
-        edit.putString(getString(R.string.config_urlEdt_key), newUrlEdt);
-        edit.apply();
+    /**
+     * Populate the activity with the top-level headers.
+     */
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.preference_headers, target);
+    }
+
+    /**
+     * This fragment shows the preferences for the first header.
+     */
+    public static class Prefs1Fragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+
+            PreferenceManager.setDefaultValues(getActivity(),
+                    R.xml.preferences, false);
+
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.preferences);
+        }
     }
 
     @Override
