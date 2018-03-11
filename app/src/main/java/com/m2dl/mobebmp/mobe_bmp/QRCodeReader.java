@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +21,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  * Created by mazab on 10/03/2018.
  */
 
-public class QRCodeReader extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+public class QRCodeReader extends MobeBMPActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
     private TextView scannerResult;
     @Override
@@ -68,5 +70,16 @@ public class QRCodeReader extends AppCompatActivity implements ZXingScannerView.
     public void onPause() {
         super.onPause();
         mScannerView.stopCamera(); // Stop camera on pause
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+
     }
 }

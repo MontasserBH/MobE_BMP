@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
  * activity qui affiche l'emploi du temps en fonction de l'url par défaut (M2 DL) ou celle entrée dans les paramètres
  */
 
-public class Edt extends AppCompatActivity {
+public class Edt extends MobeBMPActivity {
     private WebView view;
 
     @Override
@@ -46,39 +46,11 @@ public class Edt extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.menu_ma_fac:
-            /* DO EDIT */
-                return true;
-            case R.id.menu_geoloc:
-                intent = new Intent(Edt.this, Home.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_mes_cours:
-            /* DO ADD */
-                return true;
-            case R.id.menu_configuration:
-            /* DO DELETE */
-                return true;
-            case R.id.menu_informations_personnelles :
-                intent = new Intent(Edt.this, Configurations.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_emploi_du_temps:
-                intent = new Intent(Edt.this, Edt.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_informations_fac:
-                intent = new Intent(Edt.this,QRCodeReader.class);
-                startActivity(intent);
-                return true;
-        }
         return super.onOptionsItemSelected(item);
 
     }
