@@ -74,6 +74,10 @@ public class Edt extends AppCompatActivity {
                 intent = new Intent(Edt.this, Edt.class);
                 startActivity(intent);
                 return true;
+            case R.id.menu_informations_fac:
+                intent = new Intent(Edt.this,QRCodeReader.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
 

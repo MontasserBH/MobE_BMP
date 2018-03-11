@@ -78,6 +78,10 @@ public class Home extends AppCompatActivity {
                 intent = new Intent(Home.this, Edt.class);
                 startActivity(intent);
                 return true;
+            case R.id.menu_informations_fac:
+                intent = new Intent(Home.this,QRCodeReader.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
 

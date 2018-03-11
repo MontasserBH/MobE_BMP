@@ -30,7 +30,7 @@ public class Configurations extends PreferenceActivity {
      */
     @Override
     public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.preference_headers, target);
+        loadHeadersFromResource(R.xml.preferences, target);
     }
 
     /**
@@ -78,6 +78,10 @@ public class Configurations extends PreferenceActivity {
                 return true;
             case R.id.menu_emploi_du_temps:
                 intent = new Intent(Configurations.this, Edt.class);
+                startActivity(intent);
+                return true;
+            case R.id.menu_informations_fac:
+                intent = new Intent(Configurations.this,QRCodeReader.class);
                 startActivity(intent);
                 return true;
         }
