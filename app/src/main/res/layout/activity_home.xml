@@ -6,13 +6,51 @@
     android:layout_height="match_parent"
     tools:context="com.m2dl.mobebmp.mobe_bmp.Home">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:cameraBearing="1"
+        map:cameraTargetLat="43.561921"
+        map:cameraTargetLng="1.466576"
+        map:cameraZoom="15"
+        map:mapType="normal"
+        map:uiRotateGestures="true"
+        map:uiScrollGestures="true"
+        map:uiTiltGestures="true"
+        map:uiZoomControls="true"
+        map:uiZoomGestures="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="5dp"
+        android:background="@color/cast_libraries_material_featurehighlight_text_header_color"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_marginLeft="10dp"
+            android:background="@color/white"
+            android:textSize="17sp"
+            android:hint="Saisissez votre recherche" />
+
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="0dp"
+            android:layout_weight="1.6"
+            android:layout_height="wrap_content"
+            android:onClick="onMapSearch"
+            android:background="@color/white"
+            android:drawableRight="@drawable/search_icon"
+            />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
