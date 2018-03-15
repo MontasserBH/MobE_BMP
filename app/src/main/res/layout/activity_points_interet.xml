@@ -11,35 +11,34 @@
     tools:context=".PartagerPointsDInteret"
     android:transitionGroup="true">
 
-    <TextView android:text="Partager des points d'interet via Bluetooth"
+    <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textview"
-        android:textSize="26dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:drawableRight="@drawable/bluetooth"/>
+        android:text="Partager des points d'interet via Bluetooth"
+        android:textSize="24dp" />
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/search_icon"
+        android:src="@drawable/bluetooth"
         android:layout_below="@id/textview"
         android:layout_centerHorizontal="true"
         android:theme="@style/Base.TextAppearance.AppCompat" />
 
     <Button
+        android:id="@+id/button_activer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activer"
-        android:id="@+id/button_activer"
+        android:layout_alignEnd="@+id/button_lister"
         android:layout_below="@+id/imageView"
-        android:layout_toStartOf="@+id/imageView"
-        android:layout_toLeftOf="@+id/imageView"
         android:clickable="true"
-        android:onClick="on" />
+        android:onClick="on"
+        android:text="Activer" />
 
     <Button
         android:id="@+id/button_afficher"
@@ -54,15 +53,16 @@
         android:id="@+id/button_lister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/button_activer"
+        android:layout_marginEnd="13dp"
+        android:layout_toStartOf="@+id/imageView"
         android:onClick="list"
-        android:text="List devices" />
+        android:text="Lister les appareils" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="turn off"
+        android:text="Desactiver"
         android:onClick="off"
         android:id="@+id/button_desactiver"
         android:layout_below="@+id/imageView"
@@ -70,23 +70,21 @@
         android:layout_toRightOf="@+id/imageView" />
 
     <ListView
+        android:id="@+id/listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/button_activer"
-        android:layout_alignStart="@+id/button_activer"
-        android:layout_below="@+id/textView2" />
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Paired devices:"
-        android:id="@+id/textView2"
-        android:textColor="#ff34ff06"
-        android:textSize="25dp"
-        android:layout_below="@+id/button_afficher"
-        android:layout_alignLeft="@+id/listView"
-        android:layout_alignStart="@+id/listView" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button_lister"
+        android:layout_marginTop="18dp"
+        android:text="Appareils detectées:"
+        android:textSize="23dp" />
 
 </RelativeLayout>

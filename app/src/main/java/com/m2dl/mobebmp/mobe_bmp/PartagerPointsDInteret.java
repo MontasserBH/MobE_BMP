@@ -45,7 +45,7 @@ public class PartagerPointsDInteret extends MobeBMPActivity {
         if (!BA.isEnabled()) {
             Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(turnOn, 0);
-            Toast.makeText(getApplicationContext(), "Turned on",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Blurtooth activé",Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(getApplicationContext(), "Already on", Toast.LENGTH_LONG).show();
         }
@@ -53,7 +53,7 @@ public class PartagerPointsDInteret extends MobeBMPActivity {
 
     public void off(View v){
         BA.disable();
-        Toast.makeText(getApplicationContext(), "Turned off" ,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Blurtooth desactivé" ,Toast.LENGTH_LONG).show();
     }
 
 
@@ -69,7 +69,7 @@ public class PartagerPointsDInteret extends MobeBMPActivity {
         ArrayList list = new ArrayList();
 
         for(BluetoothDevice bt : pairedDevices) list.add(bt.getName());
-        Toast.makeText(getApplicationContext(), "Showing Paired Devices",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "",Toast.LENGTH_SHORT).show();
 
         final ArrayAdapter adapter = new  ArrayAdapter(this,android.R.layout.simple_list_item_1, list);
 
