@@ -49,30 +49,23 @@ public class Geolocalisation extends MobeBMPActivity implements OnMapReadyCallba
     GoogleMap googleMap;
     Marker markerPoi;
     UiSettings mUiSettings;
-    private ChildEventListener childEventListener;
     Marker marker;
-    DrawerLayout mDrawerLayout;
     DatabaseReference databaseReference;
 
     private static final int MY_LOCATION_PERMISSION_REQUEST_CODE = 1;
     private static final int LOCATION_LAYER_PERMISSION_REQUEST_CODE = 2;
-    /**
-     * Flag indicating whether a requested permission has been denied after returning in
-     * {@link #onRequestPermissionsResult(int, String[], int[])}.
-     */
+
     private boolean mLocationPermissionDenied = false;
     private DatabaseReference mBatiments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.saveDadaInFireBase();
         setContentView(R.layout.activity_home);
         mMapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        saveDadaInFireBase();
 
         mBatiments = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mobe-bmp-db8ce.firebaseio.com/");
         mBatiments.push().setValue(marker);
@@ -199,22 +192,5 @@ public class Geolocalisation extends MobeBMPActivity implements OnMapReadyCallba
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
 
-    }
-
-    public void saveDadaInFireBase() {
-        Batiment u4 = new Batiment("U4", 43.562694, 1.469332);
-        Batiment u3 = new Batiment("U3", 43.561969, 1.469866);
-        Batiment u2 = new Batiment("U2", 43.561175, 1.470413);
-        Batiment u1 = new Batiment("U1", 43.560473, 1.470269);
-        Batiment irit = new Batiment("IRIT", 43.562140, 1.468033);
-        Batiment ru1 = new Batiment("RU1", 43.562451, 1.463280);
-        Batiment bu = new Batiment("Bibliothèque", 43.563929, 1.465059);
-        databaseReference.child(u1.getName()).setValue(u1);
-        databaseReference.child(u2.getName()).setValue(u2);
-        databaseReference.child(u3.getName()).setValue(u3);
-        databaseReference.child(u4.getName()).setValue(u4);
-        databaseReference.child(irit.getName()).setValue(irit);
-        databaseReference.child(ru1.getName()).setValue(ru1);
-        databaseReference.child(bu.getName()).setValue(bu);
     }
 }

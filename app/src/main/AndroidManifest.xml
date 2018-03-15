@@ -29,9 +29,6 @@
             android:value="AIzaSyCIgRXnzyAPKWhgxDtnxTMhgjvc2ffgT5k"/>
         <uses-library android:name="com.google.android.maps" />
 
-        <activity android:name=".Home">
-
-        </activity>
         <activity android:name=".Edt" />
         <activity android:name=".Geolocalisation" >
         <intent-filter>

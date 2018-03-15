@@ -52,39 +52,11 @@ public class Configurations extends PreferenceActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.menu_ma_fac:
-            /* DO EDIT */
-                return true;
-            case R.id.menu_geoloc:
-                intent = new Intent(Configurations.this, Home.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_mes_cours:
-            /* DO ADD */
-                return true;
-            case R.id.menu_configuration:
-            /* DO DELETE */
-                return true;
-            case R.id.menu_informations_personnelles :
-                intent = new Intent(Configurations.this, Configurations.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_emploi_du_temps:
-                intent = new Intent(Configurations.this, Edt.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_informations_fac:
-                intent = new Intent(Configurations.this,QRCodeReader.class);
-                startActivity(intent);
-                return true;
-        }
         return super.onOptionsItemSelected(item);
 
     }

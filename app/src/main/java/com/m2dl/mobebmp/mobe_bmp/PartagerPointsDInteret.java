@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +20,7 @@ import java.util.Set;
  * Created by MONTASSER on 14/03/2018.
  */
 
-public class PartagerPointsDInteret extends AppCompatActivity {
+public class PartagerPointsDInteret extends MobeBMPActivity {
 
     Button b1,b2,b3,b4;
     private BluetoothAdapter BA;
@@ -72,6 +74,17 @@ public class PartagerPointsDInteret extends AppCompatActivity {
         final ArrayAdapter adapter = new  ArrayAdapter(this,android.R.layout.simple_list_item_1, list);
 
         lv.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+
     }
 
 }

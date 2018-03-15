@@ -1,7 +1,7 @@
 package com.m2dl.mobebmp.mobe_bmp;
 
 /**
- * Created by SoF on 13/03/2018.
+ * Created by montasser on 13/03/2018.
  */
 
 public class Batiment {
