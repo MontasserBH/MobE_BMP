@@ -41,8 +41,8 @@
                 android:title="@string/menu_informations_personnelles"
                 app:showAsAction="never"></item>
             <item
-                android:id="@+id/menu_point_interet"
-                android:title="@string/menu_point_interet"
+                android:id="@+id/menu_infos"
+                android:title="@string/mes_information"
                 app:showAsAction="never"></item>
         </menu>
     </item>

@@ -45,6 +45,10 @@ public class MobeBMPActivity extends AppCompatActivity {
                 intent = new Intent(this,QRCodeReader.class);
                 startActivity(intent);
                 return true;
+            case R.id.menu_infos:
+                intent = new Intent(this,InfosActivity.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
 
