@@ -9,10 +9,12 @@
             <item
                 android:id="@+id/menu_geoloc"
                 android:title="@string/menu_geoloc"
+                android:icon="@drawable/geolocalisation"
                 app:showAsAction="never"></item>
             <item
                 android:id="@+id/menu_anomalies"
                 android:title="@string/menu_anomalies"
+                android:icon="@drawable/anomalie"
                 app:showAsAction="never"></item>
         </menu>
     </item>
@@ -24,10 +26,12 @@
             <item
                 android:id="@+id/menu_emploi_du_temps"
                 android:title="@string/menu_emploi_du_temps"
+                android:icon="@drawable/agenda"
                 app:showAsAction="never"></item>
             <item
                 android:id="@+id/menu_informations_fac"
                 android:title="@string/menu_informations_fac"
+                android:icon="@drawable/infos"
                 app:showAsAction="never"></item>
         </menu>
     </item>
@@ -39,10 +43,12 @@
             <item
                 android:id="@+id/menu_informations_personnelles"
                 android:title="@string/menu_informations_personnelles"
+                android:icon="@drawable/qr"
                 app:showAsAction="never"></item>
             <item
                 android:id="@+id/menu_point_interet"
                 android:title="@string/menu_point_interet"
+                android:icon="@drawable/poi"
                 app:showAsAction="never"></item>
         </menu>
     </item>

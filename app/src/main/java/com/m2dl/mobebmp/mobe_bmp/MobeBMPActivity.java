@@ -23,7 +23,7 @@ public class MobeBMPActivity extends AppCompatActivity {
             /* DO EDIT */
                 return true;
             case R.id.menu_geoloc:
-                intent = new Intent(this, Home.class);
+                intent = new Intent(this, Geolocalisation.class);
                 startActivity(intent);
                 return true;
             case R.id.menu_mes_cours:

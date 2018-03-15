@@ -2,14 +2,18 @@ package com.m2dl.mobebmp.mobe_bmp;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +24,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PointOfInterest;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,12 +43,16 @@ import java.util.List;
  * Created by MONTASSER on 11/03/2018.
  */
 
-public class Geolocalisation extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnPoiClickListener {
+public class Geolocalisation extends MobeBMPActivity implements OnMapReadyCallback, GoogleMap.OnPoiClickListener, GoogleMap.OnMarkerClickListener {
 
     MapFragment mMapFragment;
     GoogleMap googleMap;
     Marker markerPoi;
     UiSettings mUiSettings;
+    private ChildEventListener childEventListener;
+    Marker marker;
+    DrawerLayout mDrawerLayout;
+    DatabaseReference databaseReference;
 
     private static final int MY_LOCATION_PERMISSION_REQUEST_CODE = 1;
     private static final int LOCATION_LAYER_PERMISSION_REQUEST_CODE = 2;
@@ -51,25 +61,27 @@ public class Geolocalisation extends AppCompatActivity implements OnMapReadyCall
      * {@link #onRequestPermissionsResult(int, String[], int[])}.
      */
     private boolean mLocationPermissionDenied = false;
-
-    private DatabaseReference databaseReference;
+    private DatabaseReference mBatiments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         mMapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         saveDadaInFireBase();
+
+        mBatiments = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mobe-bmp-db8ce.firebaseio.com/");
+        mBatiments.push().setValue(marker);
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
+    public void onMapReady(final GoogleMap map) {
         googleMap = map;
+
         googleMap.setOnPoiClickListener(this);
 
         mUiSettings = googleMap.getUiSettings();
@@ -80,6 +92,33 @@ public class Geolocalisation extends AppCompatActivity implements OnMapReadyCall
         }
         googleMap.setMyLocationEnabled(true);
         googleMap.setPadding(0, 800, 0, 0);
+
+        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.batiment);
+        final Bitmap smallMarker = Bitmap.createScaledBitmap(bitmapdraw.getBitmap(), 60, 60, false);
+
+        mBatiments.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    Batiment batiment = ds.getValue(Batiment.class);
+                    LatLng latLng = new LatLng(batiment.getLongitude(), batiment.getLatitude());
+                    googleMap.addMarker(new MarkerOptions()
+                            .title(batiment.getName())
+                            .position(latLng)
+                            .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
     }
 
     public void onMapSearch(View view) {
@@ -104,23 +143,6 @@ public class Geolocalisation extends AppCompatActivity implements OnMapReadyCall
             markerPoi = googleMap.addMarker(options);
             googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
-    }
-
-    public void saveDadaInFireBase() {
-        Batiment u4 = new Batiment("U4", 43.562694, 1.469332);
-        Batiment u3 = new Batiment("U3", 43.561969, 1.469866);
-        Batiment u2 = new Batiment("U2", 43.561175, 1.470413);
-        Batiment u1 = new Batiment("U1", 43.560473, 1.470269);
-        Batiment irit = new Batiment("IRIT", 43.562140, 1.468033);
-        Batiment ru1 = new Batiment("RU1", 43.562451, 1.463280);
-        Batiment bu = new Batiment("Bibliothèque", 43.563929, 1.465059);
-        databaseReference.child(u1.getName()).setValue(u1);
-        databaseReference.child(u2.getName()).setValue(u2);
-        databaseReference.child(u3.getName()).setValue(u3);
-        databaseReference.child(u4.getName()).setValue(u4);
-        databaseReference.child(irit.getName()).setValue(irit);
-        databaseReference.child(ru1.getName()).setValue(ru1);
-        databaseReference.child(bu.getName()).setValue(bu);
     }
 
     @Override
@@ -170,40 +192,29 @@ public class Geolocalisation extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.menu_ma_fac:
-            /* DO EDIT */
-                return true;
-            case R.id.menu_geoloc:
-                intent = new Intent(Geolocalisation.this, Home.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_mes_cours:
-            /* DO ADD */
-                return true;
-            case R.id.menu_configuration:
-            /* DO DELETE */
-                return true;
-            case R.id.menu_informations_personnelles :
-                intent = new Intent(Geolocalisation.this, Configurations.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_emploi_du_temps:
-                intent = new Intent(Geolocalisation.this, Edt.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_informations_fac:
-                intent = new Intent(Geolocalisation.this,QRCodeReader.class);
-                startActivity(intent);
-                return true;
-        }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    public void saveDadaInFireBase() {
+        Batiment u4 = new Batiment("U4", 43.562694, 1.469332);
+        Batiment u3 = new Batiment("U3", 43.561969, 1.469866);
+        Batiment u2 = new Batiment("U2", 43.561175, 1.470413);
+        Batiment u1 = new Batiment("U1", 43.560473, 1.470269);
+        Batiment irit = new Batiment("IRIT", 43.562140, 1.468033);
+        Batiment ru1 = new Batiment("RU1", 43.562451, 1.463280);
+        Batiment bu = new Batiment("Bibliothèque", 43.563929, 1.465059);
+        databaseReference.child(u1.getName()).setValue(u1);
+        databaseReference.child(u2.getName()).setValue(u2);
+        databaseReference.child(u3.getName()).setValue(u3);
+        databaseReference.child(u4.getName()).setValue(u4);
+        databaseReference.child(irit.getName()).setValue(irit);
+        databaseReference.child(ru1.getName()).setValue(ru1);
+        databaseReference.child(bu.getName()).setValue(bu);
     }
 }

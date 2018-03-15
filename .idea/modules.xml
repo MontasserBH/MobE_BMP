@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MobE_BMP.iml" filepath="$PROJECT_DIR$/MobE_BMP.iml" />
-      <module fileurl="file://C:\Users\SoF\Documents\aM2DL\Android\MobE_BMP\MobE_BMP.iml" filepath="C:\Users\SoF\Documents\aM2DL\Android\MobE_BMP\MobE_BMP.iml" />
       <module fileurl="file://C:\MobE\MobE_BMP\.idea\MobE_BMP.iml" filepath="C:\MobE\MobE_BMP\.idea\MobE_BMP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\SoF\Documents\aM2DL\Android\MobE_BMP\app\app.iml" filepath="C:\Users\SoF\Documents\aM2DL\Android\MobE_BMP\app\app.iml" />
     </modules>
   </component>
 </project>
