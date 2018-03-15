@@ -25,6 +25,8 @@
         <activity android:name=".Geolocalisation"/>
         <activity android:name=".Configurations"/>
         <activity android:name=".QRCodeReader"/>
+        <activity android:name=".Anomalies"
+            android:screenOrientation="portrait"/>
 
     </application>
 

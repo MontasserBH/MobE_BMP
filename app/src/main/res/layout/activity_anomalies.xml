@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.m2dl.mobebmp.mobe_bmp.Anomalies">
+
+    <TextureView
+        android:id="@+id/textureView_anomalies_camera"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView_anomalie"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:srcCompat="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/captureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="33dp"
+            android:text="Photo"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="436dp" />
+
+        <Button
+            android:id="@+id/savePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/captureButton"
+            android:layout_alignBottom="@+id/captureButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:text="Save"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

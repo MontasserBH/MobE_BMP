@@ -27,7 +27,7 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
 
-public class Home extends AppCompatActivity implements OnMapReadyCallback {
+public class Home extends MobeBMPActivity implements OnMapReadyCallback {
 
     MapFragment mMapFragment;
     GoogleMap googleMap;
@@ -81,39 +81,11 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.menu_ma_fac:
-            /* DO EDIT */
-                return true;
-            case R.id.menu_geoloc:
-                intent = new Intent(Home.this, Geolocalisation.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_mes_cours:
-            /* DO ADD */
-                return true;
-            case R.id.menu_configuration:
-            /* DO DELETE */
-                return true;
-            case R.id.menu_informations_personnelles :
-                intent = new Intent(Home.this, Configurations.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_emploi_du_temps:
-                intent = new Intent(Home.this, Edt.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_informations_fac:
-                intent = new Intent(Home.this,QRCodeReader.class);
-                startActivity(intent);
-                return true;
-        }
         return super.onOptionsItemSelected(item);
 
     }
